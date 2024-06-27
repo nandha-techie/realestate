@@ -1,0 +1,41 @@
+$focus-ring-width: 0.05rem;
+$enable-negative-margins: true;
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+$custom-colors: (
+  "custom-color": #900,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+#test {
+  background-color: blue;
+  &:hover {
+    background-color: red;
+  }
+}
+
+.img_card {
+  overflow: hidden;
+  height: 200px;
+  img {
+    height: 100%;
+    transition: 0.5s ease 0s;
+    border-color: gray;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+.main-wrapper {
+  height: 100vh;
+}
+.show-more:hover {
+  text-decoration: underline;
+}
+
+$focus-ring-color: rgba(tomato, 1);
+
+@import "bootstrap/scss/bootstrap";
