@@ -215,8 +215,9 @@ const newListing = () => {
   };
 
   const removeImages = (id: number) => {
-    const temp = imageUrls.filter((data, index) => index != id);
-    setImageUrls(temp);
+    // const temp = imageUrls.filter((data, index) => index != id);
+    imageUrls.splice(id, 1);
+    setImageUrls([...imageUrls]);
   };
 
   useEffect(() => {

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AppProvider } from "./context/AppContext";
 import {
   BrowserRouter as Router,
