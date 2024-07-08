@@ -11,7 +11,7 @@ const Banner = () => {
             <h2 className="fs-1 fw-bold">
               Find your next <span>Perfect</span>
             </h2>
-            <h2 className="fs-1 fw-bold">place with ease</h2>
+            <h2 className="fs-1 fw-bold test">place with ease</h2>
             <p>
               RealEstate will help you find your home fast, easy and
               comfortable. Our expert support are always available.

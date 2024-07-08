@@ -74,7 +74,7 @@ export const getListing = () => {
 };
 
 export const getEditList = (id: any) => {
-  const token: string | null = getToken();
+  const token: string | any = getToken();
   return axios(
     `${URL}/index.php?route=extension/opencart/module/api.getEditList&list=${id}`,
     {
@@ -151,7 +151,7 @@ export const searchList = (data: SearchInputSchema) => {
 export const getListdetail = (id: any) => {
   const token: string | null = getToken();
   return axios(
-    `${URL}/index.php?route=extension/opencart/module/api.getEditList&list=${id}`,
+    `${URL}/index.php?route=extension/opencart/module/api.getItemList&list=${id}`,
     {
       method: "GET",
       headers: {

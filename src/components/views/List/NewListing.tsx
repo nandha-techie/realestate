@@ -250,7 +250,7 @@ const newListing = () => {
   return (
     <>
       <ToastContainer />
-      <Container>
+      <Container className="mb-5">
         <h2 className="text-center my-3">
           {id ? "Updating Listing" : "Create Listing"}
         </h2>

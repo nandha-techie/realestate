@@ -7,6 +7,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/views/Footer/Footer";
 import Home from "./components/views/Home";
 import Signup from "./components/views/Signup";
 import Login from "./components/views/Login";
@@ -28,7 +29,7 @@ function App() {
   // const key2: any = { page: "edit" };
   return (
     <AppProvider>
-      <Router>
+      <Router basename={"/realestate"}>
         <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -45,7 +46,9 @@ function App() {
           <Route path="/list-detail/:id" element={<ListDetail />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="/*" element={<Navigate replace to="/" />} />
         </Routes>
+        <Footer />
       </Router>
     </AppProvider>
   );

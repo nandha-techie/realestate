@@ -22,14 +22,14 @@ export const getLocalStorageUser = (): User[] | null => {
   return data ? data : null;
 };
 
-export const getToken = (): string | null => {
+export const getToken = (): string | any => {
   const data: User[] | null = JSON.parse(
     localStorage.getItem("accessToken") || "null"
   );
   if (data) {
     return data[0].token;
   }
-  return null;
+  return "";
 };
 
 export const setLocalStorageUser = (data: User) => {

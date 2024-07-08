@@ -10,6 +10,7 @@ import { getLocalStorageUser } from "./utility/Helper";
 
 const Header = () => {
   const { user, setUser, logoutUser } = useAppContext();
+  const [active, setActive] = useState("home");
   const [search, setSearch] = useState<string>("");
   const navigate = useNavigate();
   const inputRef: any = useRef(null);
@@ -34,13 +35,25 @@ const Header = () => {
   if (user) {
     link = (
       <>
-        <Link to="/listing" className=" nav-link">
+        <Link
+          to="/listing"
+          className={`nav-link ${active == "listing" ? "text-primary" : ""}`}
+          onClick={() => setActive("listing")}
+        >
           Listings
         </Link>
-        <Link to="/new-listing" className="btn btn-link text-decoration-none">
+        <Link
+          to="/new-listing"
+          className={`nav-link ${
+            active == "new-listing" ? "text-primary" : ""
+          }`}
+          onClick={() => setActive("new-listing")}
+        >
           Create Listing
         </Link>
-        <Button onClick={logout}>Logout</Button>
+        <Button className="custom-btn" onClick={logout}>
+          Logout
+        </Button>
       </>
     );
   } else {
@@ -60,43 +73,53 @@ const Header = () => {
   }, []);
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary shadow-sm">
+    <Navbar expand="md" className="bg-body-tertiary shadow-sm">
       <Container className="">
-        <Link to="/" className="navbar-brand">
+        <Navbar.Brand as={Link} to="/" onClick={() => setActive("home")}>
           <span className="text-custom-color">Real</span>
           <span>Estate</span>
-        </Link>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse
-          id="navbarScroll "
-          className="d-flex justify-content-end"
-        >
-          <Form className="d-flex" ref={inputRef} onSubmit={handleSubmit}>
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2 header_search"
-              aria-label="Search"
-              // value={search}
-
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-            />
-          </Form>
-          <Nav
-            className=" my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/about" className="nav-link">
-              About
-            </Link>
-            {link}
-          </Nav>
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="navbarScroll"
+          className="border-0 bg-transparent"
+        ></Navbar.Toggle>
+        <Navbar.Collapse id="navbarScroll" className="me-auto mt-3">
+          <div className="w-100 d-flex flex-column flex-md-row justify-content-end">
+            <Form
+              className="d-flex search-form"
+              ref={inputRef}
+              onSubmit={handleSubmit}
+            >
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                bsPrefix="form-control search-form"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+            </Form>
+            <Nav className="my-2 my-lg-0">
+              <Link
+                to="/"
+                className={`nav-link ${active == "home" ? "text-primary" : ""}`}
+                onClick={() => setActive("home")}
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                className={`nav-link ${
+                  active == "about" ? "text-primary" : ""
+                }`}
+                onClick={() => setActive("about")}
+              >
+                About
+              </Link>
+              {link}
+            </Nav>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

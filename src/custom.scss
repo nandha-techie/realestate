@@ -1,22 +1,17 @@
-$focus-ring-width: 0.05rem;
 $enable-negative-margins: true;
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
 
-$custom-colors: (
-  "custom-color": #900,
-);
-
-$theme-colors: map-merge($theme-colors, $custom-colors);
-
-#test {
-  background-color: blue;
-  &:hover {
-    background-color: red;
-  }
+.search-form:focus {
+  box-shadow: 0 0 0 0.05rem rgb(13 110 253 / 25%) !important;
 }
-
+.custom-btn {
+  background-color: blueviolet !important;
+  border: #fff !important;
+}
 .img_card {
   overflow: hidden;
   height: 200px;
@@ -36,6 +31,21 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   text-decoration: underline;
 }
 
-$focus-ring-color: rgba(tomato, 1);
+/* Footer start */
 
+/* Footer end */
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "test": (
+      property: cursor,
+      class: test,
+      responsive: true,
+      values: auto pointer grab,
+    ),
+  )
+);
+
+@import "bootstrap/scss/utilities/api";
 @import "bootstrap/scss/bootstrap";
